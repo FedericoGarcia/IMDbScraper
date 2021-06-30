@@ -7,7 +7,7 @@ import requests
 import imdbscraper.imdb
 import imdbscraper.imdb.name
 
-__version__ = '0.1.0'
+__version__ = '0.1.1'
 
 class Name:
     def __init__(self, id: int) -> None:
@@ -29,13 +29,22 @@ class Name:
     def name(self) -> str: return self.__biography["name"]
 
     @property
-    def birthday(self) -> str: return self.__biography["birthday"]
+    def birth_day(self) -> str: return self.__biography["birth_day"]
 
     @property
-    def birthplace(self) -> str: return self.__biography["birthplace"]
+    def birth_place(self) -> str: return self.__biography["birth_place"]
 
     @property
     def birth_name(self) -> str: return self.__biography["birth_name"]
+
+    @property
+    def death_day(self) -> str: return self.__biography["death_day"]
+
+    @property
+    def death_place(self) -> str: return self.__biography["death_place"]
+
+    @property
+    def death_cause(self) -> str: return self.__biography["death_cause"]
 
     @property
     def height(self) -> float: return self.__biography["height"]
