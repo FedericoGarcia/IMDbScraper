@@ -8,7 +8,7 @@ import requests
 
 class Biography:
 
-    def get_overview_table(page_raw: str) -> pandas.DataFrame:
+    def get_overview_table(page_raw: str):
         try:
             overview_table = pandas.read_html(page_raw, attrs = {"id": "overviewTable"})[0]
             overview_table.columns = ["field", "value"]
@@ -17,14 +17,14 @@ class Biography:
             overview_table = None
         return overview_table
     
-    def get_spouses_table(page_raw: str) -> list[pandas.DataFrame]:
+    def get_spouses_table(page_raw: str):
         try:
             spouses_table = pandas.read_html(page_raw, attrs = {"id": "tableSpouses"})
         except:
             spouses_table = None
         return spouses_table
 
-    def get_salaries_table(page_raw: str) -> list[pandas.DataFrame]:
+    def get_salaries_table(page_raw: str):
         try:
             salaries_table = pandas.read_html(page_raw, attrs = {"id": "salariesTable"})
         except:
