@@ -1,3 +1,23 @@
+'''
+                                 IMDbScraper
+                   A web scraper to extract data from IMDb
+
+Copyright (C) 2021  Federico García <garciafedericoagustin@gmail.com>
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+'''
+
 import datetime
 import re
 
@@ -33,7 +53,11 @@ class Biography:
     
     def get_name(page_raw: str, page_parsed: bs4.BeautifulSoup) -> str:
         try:
-            name = page_parsed.find("div", {"class": "subpage_title_block"}).find("div", {"class": "parent"}).find("h3").find("a").text
+            name = page_parsed.find("div", {"class": "subpage_title_block"})
+            name = name.find("div", {"class": "parent"})
+            name = name.find("h3")
+            name = name.find("a")
+            name = name.text
         except:
             name = None
         return name
